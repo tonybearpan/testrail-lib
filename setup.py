@@ -8,23 +8,24 @@ setup(name='testrail-library',
       version='0.0.1',
       keywords=('TestRail', 'TestRail API'),
       description='Python client library for TestRail APIs (http)',
-      long_description='See http://liluo.github.com/douban-client',
-      license='MIT License',
+      long_description='See https://github.com/JASON0916/testrail-library',
+      license='Apache License',
 
-      url='http://liluo.github.com/douban-client',
-      author='liluo',
-      author_email='i@liluo.org',
+      url='https://github.com/JASON0916/testrail-library',
+      author='Jason CM',
+      author_email='847671011@qq.com',
 
       packages=find_packages(),
       include_package_data=True,
       platforms='any',
-      install_requires=['py-oauth2>=0.0.8', 'six>=1.4.1'],
+      install_requires=['requests'],
       classifiers=[
           'Environment :: Web Environment',
           'Intended Audience :: Developers',
-          'License :: OSI Approved :: MIT License',
+          'License :: OSI Approved :: Apache License',
           'Operating System :: OS Independent',
           'Programming Language :: Python',
           'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
           'Topic :: Software Development :: Libraries :: Python Modules'
-      ],)
+      ],
+      )

@@ -8,10 +8,10 @@ from error import TesRailAPIError, TestRailAuthError
 def check_execption(func):
     def _check(*arg, **kws):
         resp = func(*arg, **kws)
-        if resp.status >= 400:
-            if resp.status == 403:
+        if resp.status_code >= 400:
+            if resp.status_code == 403:
                 raise TestRailAuthError(403, 'No permission')
-            elif resp.status == 401:
+            elif resp.status_code == 401:
                 raise TestRailAuthError(401, 'Not authorized')
             else:
                 raise TesRailAPIError(resp)
@@ -24,8 +24,9 @@ def check_execption(func):
 
 class TestRailAPIBase(object):
 
-    def __init__(self, user, password):
-        self.user = user
+    def __init__(self, url, user_name, password):
+        self.url = url
+        self.user_name = user_name
         self.password = password
         self.header = {
             'Content-Type': 'application/json'
@@ -36,14 +37,14 @@ class TestRailAPIBase(object):
 
     @check_execption
     def _get(self, url, **opts):
-        return requests.get(url,
-                            auth=(self.user, self.password),
+        return requests.get(self.url + url,
+                            auth=(self.user_name, self.password),
                             headers=self.header,
                             **opts)
 
     @check_execption
     def _post(self, url, **opts):
-        return requests.post(url,
-                             auth=(self.user, self.password),
-                             headers=self.headerm,
+        return requests.post(self.url + url,
+                             auth=(self.user_name, self.password),
+                             headers=self.header,
                              **opts)
