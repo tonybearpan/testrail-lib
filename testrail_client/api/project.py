@@ -41,7 +41,10 @@ class Project(TestRailAPIBase):
         2 for single suite + baselines,
         3 for multiple suites) (added with TestRail 4.0)
         """
-        return self._post('add_project', json=locals())
+        param = dict(name, announcement=announcement,
+                     show_announcement=show_announcement,
+                     suite_mode=suite_mode)
+        return self._post('add_project', json=param)
 
     def update(self, project_id, is_completed=True,
                name='', announcement='',
@@ -61,8 +64,12 @@ class Project(TestRailAPIBase):
         2 for single suite + baselines,
         3 for multiple suites) (added with TestRail 4.0)
         """
+        param = dict(name, announcement=announcement,
+                     show_announcement=show_announcement,
+                     suite_mode=suite_mode,
+                     is_completed=is_completed)
         return self._post('update_project/{}'.format(project_id),
-                          json=locals().pop('project_id'))
+                          json=param)
 
     def delete(self, project_id):
         """

@@ -44,12 +44,16 @@ class Run(TestRailAPIBase):
         and false for a custom case selection
         :param case_ids:An array of case IDs for the custom case selection
         """
+        param = dict(suite_id=suite_id, name=name,
+                     description=description, milestone_id=milestone_id,
+                     assignedto_id=assignedto_id,
+                     include_all=include_all, case_ids=case_ids)
         return self._post('add_run/{}'.format(project_id),
-                          json=locals().pop(project_id))
+                          json=param)
 
     def update(self, run_id, name=None, assignedto_id=None,
-            description=None, milestone_id=None,
-            include_all=True, case_ids=None):
+               description=None, milestone_id=None,
+               include_all=True, case_ids=None):
         """
         Updates an existing test run
         (partial updates are supported,
@@ -63,8 +67,12 @@ class Run(TestRailAPIBase):
         and false for a custom case selection
         :param case_ids:An array of case IDs for the custom case selection
         """
+        param = dict(name=name,
+                     description=description, milestone_id=milestone_id,
+                     assignedto_id=assignedto_id,
+                     include_all=include_all, case_ids=case_ids)
         return self._post('update_run/{}'.format(run_id),
-                          json=locals().pop(run_id))
+                          json=param)
 
     def close(self, run_id):
         """

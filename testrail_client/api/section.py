@@ -44,8 +44,10 @@ class Section(TestRailAPIBase):
         (to build section hierarchies)
         :param name:The name of the section (required)
         """
+        param = dict(description=description, suite_id=suite_id,
+                     parent_id=parent_id, name=name)
         return self._post('add_section/{}'.format(project_id),
-                          json=locals().pop('project_id'))
+                          json=param)
 
     def update(self, section_id, description=None, suite_id=None,
                parent_id=None, name=None):
@@ -56,8 +58,10 @@ class Section(TestRailAPIBase):
         (added with TestRail 4.0)
         :param name:The name of the section (required)
         """
+        param = dict(description=description, suite_id=suite_id,
+                     parent_id=parent_id, name=name)
         return self._post('update_section/{}'.format(section_id),
-                          json=locals().pop('section_id'))
+                          json=param)
 
     def delete(self, section_id):
         """

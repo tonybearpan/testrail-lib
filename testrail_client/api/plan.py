@@ -36,8 +36,10 @@ class Plan(TestRailAPIBase):
         :param milestone_id:The ID of the milestone to link to the test plan
         :param entries:An array of objects describing the test runs of the plan
         """
+        param = dict(name=name, description=description,
+                     milestone_id=milestone_id, entries=entries)
         return self._post('add_plan/{}'.format(project_id),
-                          json=locals().pop('project_id'))
+                          json=param)
 
     def add_entry(self, plan_id, suite_id, name='', description='',
                   assignedto_id=None, include_all=True, case_ids=list(),
@@ -57,8 +59,11 @@ class Plan(TestRailAPIBase):
         :param runs:An array of test runs with configurations,
         please see the example below for details (requires TestRail 3.1 or later)
         """
+        param = dict(suite_id=suite_id, name=name, description=description,
+                     assignedto_id=assignedto_id, include_all=include_all, case_ids=case_ids,
+                     config_ids=config_ids, runs=runs)
         return self._post('add_plan_entry/{}'.format(plan_id),
-                          json=locals().pop('plan_id'))
+                          json=param)
 
     def update(self, plan_id, name='', description='',
                milestone_id=None, entries=list()):
@@ -71,8 +76,10 @@ class Plan(TestRailAPIBase):
         :param milestone_id:The ID of the milestone to link to the test plan
         :param entries:An array of objects describing the test runs of the plan
         """
+        param = dict(name=name, description=description,
+                     milestone_id=milestone_id, entries=entries)
         return self._post('update_plan/{}', format(plan_id),
-                          json=locals().pop('plan_id'))
+                          json=param)
 
     def update_entry(self, plan_id, entry_id, name='',
                      description=None, assignedto_id=None,

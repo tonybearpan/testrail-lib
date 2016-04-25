@@ -40,8 +40,9 @@ class MileStone(TestRailAPIBase):
         :param due_on:The description of the milestone
         :param description: The due date of the milestone (as UNIX timestamp)
         """
+        param = dict(name=name, due_on=due_on, description=description)
         return self._post('add_milestone/{}'.format(project_id),
-                          json=locals().pop('project_id'))
+                          json=param)
 
     def update(self, milestone_id, is_completed,
                name, due_on='', description=''):
@@ -54,8 +55,10 @@ class MileStone(TestRailAPIBase):
         :param due_on:The description of the milestone
         :param description: The due date of the milestone (as UNIX timestamp)
         """
+        param = dict(is_completed=is_completed,name=name,
+                     due_on=due_on, description=description)
         return self._post('update_milestone/{}'.format(milestone_id),
-                          json=locals().pop('milestone_id'))
+                          json=param)
 
     def delete(self, milestone_id):
         """

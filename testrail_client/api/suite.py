@@ -33,8 +33,9 @@ class Suite(TestRailAPIBase):
         :param name:The name of the test suite (required)
         :param description:The description of the test suite
         """
+        param = dict(name=name, description=description)
         return self._post('add_suite/{}'.format(project_id),
-                          json=locals().pop('project_id'))
+                          json=param)
 
     def update(self, suite_id, name, description=None):
         """
@@ -43,8 +44,9 @@ class Suite(TestRailAPIBase):
         :param name:The name of the test suite (required)
         :param description:The description of the test suite
         """
+        param = dict(name=name, description=description)
         return self._post('add_suite/{}'.format(suite_id),
-                          json=locals().pop('suite_id'))
+                          json=param)
 
     def delete(self, suite_id):
         """

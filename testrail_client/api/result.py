@@ -52,8 +52,12 @@ class Result(TestRailAPIBase):
         :param defects:A comma-separated list of defects to link to the test result
         :param assignedto_id:The ID of a user the test should be assigned to
         """
+        param = dict(status_id=status_id, comment=comment,
+                     vesion=reversed, elapsed=elapsed, defects=defects,
+                     assignedto_id=assignedto_id)
+        param.update(**kwargs)
         return self._post('add_result/{}'.format(test_id),
-                          json=locals().pop('test_id'))
+                          json=param)
 
     def add_for_case(self, run_id, case_id, status_id=None,
                      comment=None, vesion=None, elapsed=None,
@@ -70,11 +74,13 @@ class Result(TestRailAPIBase):
         :param defects:A comma-separated list of defects to link to the test result
         :param assignedto_id:The ID of a user the test should be assigned to
         """
-        run_id = locals().pop('run_id')
-        case_id = locals().pop('case_id')
+        param = dict(status_id=status_id, comment=comment,
+                     vesion=reversed, elapsed=elapsed, defects=defects,
+                     assignedto_id=assignedto_id)
+        param.update(**kwargs)
         return self._post('add_result_for_case/{run_id}/{case_id}'
                           .format(run_id=run_id, case_id=case_id),
-                          json=locals())
+                          json=param)
 
     def add_multiple(self, run_id, status_id=None, comment=None,
                      vesion=None, elapsed=None, defects=None,
@@ -89,8 +95,12 @@ class Result(TestRailAPIBase):
         :param defects:A comma-separated list of defects to link to the test result
         :param assignedto_id:The ID of a user the test should be assigned to
         """
+        param = dict(status_id=status_id, comment=comment,
+                     vesion=reversed, elapsed=elapsed, defects=defects,
+                     assignedto_id=assignedto_id)
+        param.update(**kwargs)
         return self._post('add_results/{}'.format(run_id),
-                          json=locals().pop('run_id'))
+                          json=param)
 
     def field(self):
         """
