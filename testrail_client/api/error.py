@@ -4,7 +4,8 @@
 
 class TestRailBaseError(Exception):
     def __str__(self):
-        return "***%s (%s)*** %s" % (self.status, self.reason, self.msg)
+        return "[TestRailAPI] %s || (%s) || %s" \
+               % (self.status, self.reason, self.msg)
 
 
 class TestRailAuthError(TestRailBaseError):

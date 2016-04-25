@@ -28,7 +28,7 @@ class Section(TestRailAPIBase):
         (optional if the project is operating in single suite mode)
         """
         return self._get('get_sections/{project_id}/{section_id}'
-                         .format(locals()))
+                         .format(**locals()))
 
     def add(self, project_id, description=None, suite_id=None,
             parent_id=None, name=None):
