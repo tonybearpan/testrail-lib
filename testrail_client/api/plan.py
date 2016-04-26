@@ -19,12 +19,14 @@ class Plan(TestRailAPIBase):
         """
         return self._get('get_plan/{}'.format(plan_id))
 
-    def for_project(self, project_id):
+    def for_project(self, project_id, **filters):
         """
         Returns a list of test plans for a project.
         :param project_id:The ID of the project
+        :param filters: dict, request filters
         """
-        return self._get('get_plans/{}'.format(project_id))
+        return self._get('get_plans/{}'.format(project_id),
+                         params=filters)
 
     def add(self, project_id, name='', description='',
             milestone_id=None, entries=list()):

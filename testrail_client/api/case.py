@@ -21,7 +21,7 @@ class Case(TestRailAPIBase):
         """
         return self._get('get_case/{}'.format(case_id))
 
-    def for_project(self, project_id, suite_id='', section_id=''):
+    def for_project(self, project_id, suite_id='', section_id='', **filters):
         """
         Returns a list of test cases for a test suite or specific section in a test suite.
 
@@ -29,10 +29,12 @@ class Case(TestRailAPIBase):
         :param suite_id: The ID of the test suite (optional
         if the project is operating in single suite mode)
         :param section_id: The ID of the section (optional)
+        :param filters: dict, requests filter support fields
         """
         return self._get('get_cases/{project_id}'
                          '&suite_id={suite_id}'
-                         '&section_id={section_id}'.format(**locals()))
+                         '&section_id={section_id}'.format(**locals()),
+                         params=filters)
 
     def add(self, section_id, title, template_id=1,
             type_id=1, priority_id=3, estimate=None, milestone_id=None,

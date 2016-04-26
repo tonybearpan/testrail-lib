@@ -22,6 +22,17 @@ def check_execption(func):
     return _check
 
 
+def format_request_filter(func):
+    def _format(*args, **kwargs):
+        params = kwargs.get('params', dict())
+        for key in params:
+            if isinstance(params[key], list):
+                params[key] = ','.join(map(str, params[key]))
+        print kwargs
+        return func(*args, **kwargs)
+    return _format
+
+
 class TestRailAPIBase(object):
 
     def __init__(self, url, user_name, password):
@@ -35,6 +46,7 @@ class TestRailAPIBase(object):
     def __repr__(self):
         return '<TestRailAPI Base>'
 
+    @format_request_filter
     @check_execption
     def _get(self, url, **opts):
         return requests.get(self.url + url,

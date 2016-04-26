@@ -19,13 +19,15 @@ class Run(TestRailAPIBase):
         """
         return self._get('get_run/{}'.format(run_id))
 
-    def for_project(self, project_id):
+    def for_project(self, project_id, **filters):
         """
         Returns a list of test runs for a project.
         Only returns those test runs that are not part of a test plan
         :param project_id:The ID of the project
+        :param filters: dict, request filter
         """
-        return self._get('get_runs/{}'.format(project_id))
+        return self._get('get_runs/{}'.format(project_id),
+                         params=filters)
 
     def add(self, project_id, suite_id=None, name=None,
             description=None, milestone_id=None, assignedto_id=None,

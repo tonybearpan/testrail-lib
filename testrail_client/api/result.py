@@ -12,30 +12,36 @@ class Result(TestRailAPIBase):
     def __repr__(self):
         return '<TestRailAPI result>'
 
-    def get(self, test_id):
+    def get(self, test_id, **filters):
         """
         Returns a list of test results for a test.
         :param test_id:The ID of the test
+        :param filters: dict, request filter
         """
-        return self._get('get_results/{}'.format(test_id))
+        return self._get('get_results/{}'.format(test_id),
+                         params=filters)
 
-    def for_case(self, run_id, case_id):
+    def for_case(self, run_id, case_id, **filters):
         """
         Returns a list of test results for a test run and case combination.
         :param run_id:The ID of the test run
         :param case_id:The ID of the test case
+        :param filters: dict, request filter
         """
         return self._get('get_results_for_case/{run_id}/{case_id}'
                          .format(run_id=run_id,
-                                 case_id=case_id)
+                                 case_id=case_id),
+                         params=filters
                          )
 
-    def for_run(self, run_id):
+    def for_run(self, run_id, **filters):
         """
         Returns a list of test results for a test run.
         :param run_id:The ID of the test run
+        :param filters: dict, request filter
         """
-        return self._get('get_results_for_run/{}'.format({run_id}))
+        return self._get('get_results_for_run/{}'.format({run_id}),
+                         params=filters)
 
     def add(self, test_id, status_id=None, comment=None,
             vesion=None, elapsed=None, defects=None,
@@ -53,7 +59,7 @@ class Result(TestRailAPIBase):
         :param assignedto_id:The ID of a user the test should be assigned to
         """
         param = dict(status_id=status_id, comment=comment,
-                     vesion=reversed, elapsed=elapsed, defects=defects,
+                     vesion=vesion, elapsed=elapsed, defects=defects,
                      assignedto_id=assignedto_id)
         param.update(**kwargs)
         return self._post('add_result/{}'.format(test_id),
