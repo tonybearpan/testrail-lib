@@ -22,7 +22,7 @@ The API is wraped to be as easy as possible, you can read the example code to kn
 
 To know the fields and parameters supported, you need to read the official document of test rail. 
 
-`The official document is here.<http://docs.gurock.com/testrail-api2/start>`_
+`The official document is here <http://docs.gurock.com/testrail-api2/start>`_
 
 -----------------
 Example
