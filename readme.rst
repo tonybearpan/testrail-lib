@@ -8,7 +8,10 @@ This is a Python wrapper of the test rail api according to
 -----------------
 Install
 -----------------
-You can install it from Pypi::
+You can install it from Pypi
+
+::
+
     pip install testrail-library
 
 -----------------    
@@ -24,6 +27,7 @@ To know the fields and parameters supported, you need to read the official docum
 -----------------
 Example
 -----------------
+::
 
     from testrail_client import TestRailClient
 
