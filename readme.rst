@@ -1,13 +1,19 @@
-# testrail-library
+=================
+testrail-library
+=================
 
 This is a Python wrapper of the test rail api according to 
-[the official document](http://docs.gurock.com/testrail-api2/start)
+`the official document <http://docs.gurock.com/testrail-api2/start>`_
 
-## Install
-
+-----------------
+Install
+-----------------
+You can install it from Pypi::
     pip install testrail-library
-    
-## Document
+
+-----------------    
+Document
+-----------------
 
 The API is wraped to be as easy as possible, you can read the example code to know how to use.
 
@@ -15,7 +21,9 @@ To know the fields and parameters supported, you need to read the official docum
 
 [the official document](http://docs.gurock.com/testrail-api2/start)
 
-## Example
+-----------------
+Example
+-----------------
 
     from testrail_client import TestRailClient
 
@@ -36,8 +44,10 @@ To know the fields and parameters supported, you need to read the official docum
         print len(client.test.for_run(8155, status_id=5))
         # 164 + 28 = 192
         print len(client.test.for_run(8155, status_id=[1, 5]))
- 
-## Version
+
+-----------------
+Version
+-----------------
 
 * Version 0.0.1:    Implementation of basic all APIs
 
