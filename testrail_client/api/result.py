@@ -88,25 +88,25 @@ class Result(TestRailAPIBase):
                           .format(run_id=run_id, case_id=case_id),
                           json=param)
 
-    def add_multiple(self, run_id, status_id=None, comment=None,
-                     vesion=None, elapsed=None, defects=None,
-                     assignedto_id=None, **kwargs):
+    def add_for_cases(self, run_id, results):
+        """
+        Adds one or more new test results, comments or assigns one or more tests (using the case IDs).
+        Ideal for test automation to bulk-add multiple test results in one step.
+        :param run_id:The ID of the test run.
+        :param results: results to add.
+        """
+        return self._post('add_results/{}'.format(run_id),
+                          json=locals())
+
+    def add_multiple(self, run_id, results):
         """
         Adds one or more new test results, comments or assigns one or more tests.
         Ideal for test automation to bulk-add multiple test results in one step.
-        :param status_id:The ID of the test status.
-        :param comment:The comment / description for the test result
-        :param vesion:The version or build you tested against
-        :param elapsed:The time it took to execute the test, e.g. "30s" or "1m 45s"
-        :param defects:A comma-separated list of defects to link to the test result
-        :param assignedto_id:The ID of a user the test should be assigned to
+        :param run_id:The ID of the test run.
+        :param results: results to add.
         """
-        param = dict(status_id=status_id, comment=comment,
-                     vesion=reversed, elapsed=elapsed, defects=defects,
-                     assignedto_id=assignedto_id)
-        param.update(**kwargs)
         return self._post('add_results/{}'.format(run_id),
-                          json=param)
+                          json=locals())
 
     def field(self):
         """
