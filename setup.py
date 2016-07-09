@@ -1,11 +1,11 @@
-#!/usr/bin/env python                                                                                                                                                
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 
 from setuptools import setup, find_packages
 
 setup(name='testrail-library',
-      version='0.0.5',
+      version='0.0.7',
       keywords=('TestRail', 'TestRail API'),
       description='Python client library for TestRail APIs (http)',
       long_description='See https://github.com/JASON0916/testrail-library',
