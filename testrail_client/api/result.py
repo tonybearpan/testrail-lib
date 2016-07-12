@@ -96,8 +96,9 @@ class Result(TestRailAPIBase):
         :param results: results to add.
         """
         param = dict(results=results)
-        return self._post('add_results/{}'.format(run_id),
-                          json=param)
+        res = self._post('add_results_for_cases/{}'.format(run_id),
+                         json=param)
+        return res
 
     def add_multiple(self, run_id, results):
         """

@@ -28,7 +28,6 @@ def format_request_filter(func):
         for key in params:
             if isinstance(params[key], list):
                 params[key] = ','.join(map(str, params[key]))
-        print kwargs
         return func(*args, **kwargs)
     return _format
 
