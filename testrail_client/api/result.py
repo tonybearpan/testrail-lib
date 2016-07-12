@@ -95,8 +95,7 @@ class Result(TestRailAPIBase):
         :param run_id:The ID of the test run.
         :param results: results to add.
         """
-        param = dict(run_id=run_id,
-                     results=results)
+        param = dict(results=results)
         return self._post('add_results/{}'.format(run_id),
                           json=param)
 
@@ -107,8 +106,7 @@ class Result(TestRailAPIBase):
         :param run_id:The ID of the test run.
         :param results: results to add.
         """
-        param = dict(run_id=run_id,
-                     results=results)
+        param = dict(results=results)
         return self._post('add_results/{}'.format(run_id),
                           json=param)
 
