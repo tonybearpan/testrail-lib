@@ -38,7 +38,7 @@ class Case(TestRailAPIBase):
 
     def add(self, section_id, title, template_id=1,
             type_id=1, priority_id=3, estimate=None, milestone_id=None,
-            refs=None, custom_steps=list(), **kwargs):
+            refs=None, custom_steps=list(), preconditions='', **kwargs):
         """
         Creates a new test case.
 
@@ -56,7 +56,7 @@ class Case(TestRailAPIBase):
         param = dict(title=title, template_id=template_id,
                      type_id=type_id, priority_id=priority_id,
                      estimate=estimate, milestone_id=milestone_id,
-                     refs=refs, custom_steps=custom_steps)
+                     refs=refs, custom_steps=custom_steps, custom_preconds= preconditions)
         param.update(**kwargs)
         return self._post('add_case/{}'.format(section_id),
                           json=param)
