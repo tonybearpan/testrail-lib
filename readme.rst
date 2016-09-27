@@ -1,5 +1,5 @@
 =================
-testrail-library
+testrail-lib
 =================
 
 This is a Python wrapper of the test rail api according to 
@@ -12,7 +12,7 @@ You can install it from Pypi
 
 ::
 
-    pip install testrail-library
+    pip install testrail-lib
 
 -----------------    
 Document

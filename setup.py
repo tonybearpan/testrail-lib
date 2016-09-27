@@ -4,7 +4,7 @@
 
 from setuptools import setup, find_packages
 
-setup(name='testrail-library',
+setup(name='testrail-lib',
       version='0.1.1',
       keywords=('TestRail', 'TestRail API'),
       description='Python client library for TestRail APIs (http)',
