@@ -106,7 +106,7 @@ class Case(TestRailAPIBase):
         """
         return self._get('get_case_types')
 
-    def cases(self):
+    def status(self):
         """
         Use the following API methods to request details about test statuses.
         """
